@@ -4,6 +4,14 @@ doctrine:
         driver: 'pdo_pgsql'
         charset: utf8
 
+################## For MySql
+ #       driver: 'pdo_mysql'
+ #       server_version: '5.7'
+ #       charset: utf8mb4
+ #       default_table_options:
+ #           charset: utf8mb4
+ #           collate: utf8mb4_unicode_ci
+
         url: '%env(resolve:DATABASE_URL)%'
     orm:
         auto_generate_proxy_classes: true
