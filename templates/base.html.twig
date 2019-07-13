@@ -1,12 +1,91 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta charset="UTF-8">
+		{% block stylesheets %}
+		<link rel="icon" type="shortcut icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    	<link rel="stylesheet" href="http://getbootstrap.com/examples/dashboard/dashboard.css">
+        {% endblock %}
+        <title>{% block title %}FAHHAMA.Com{% endblock %}</title>
+	</head>
+	<body class="is-preload homepage">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper">
+					<header id="header" class="container">
+
+						<!-- Logo -->
+							<div id="logo">
+								<h1><a href="{{ path('app_home')}}">FAHHAMA</a></h1>
+								<span>.Com</span>
+							</div>
+
+						<!-- Nav -->
+							<nav id="nav">
+								<ul>
+									{% for menu in Menus %}
+									<li class="current"><a href="{{ path('app_home')}}">{{ menu.Name }}</a></li>
+									{% endfor %}
+									<li class="current"><a href="{{ path('app_home')}}">الرئيسية</a></li>
+								</ul>
+							</nav>
+					</header>
+				</div>
+				{% block body %}{% endblock %}
+        		{% block javascripts %}
+           		<script src="{{ asset('js/jquery.min.js') }}"></script>
+				<script src="{{ asset('js/jquery.dropotron.min.js') }}"></script>
+				<script src="{{ asset('js/browser.min.js') }}"></script>
+				<script src="{{ asset('js/breakpoints.min.js') }}"></script>
+				<script src="{{ asset('js/util.js') }}"></script>
+				<script src="{{ asset('js/main.js') }}"></script>
+				{% endblock %}
+			<!-- Footer -->
+				<div id="footer-wrapper">
+					<footer id="footer" class="container" dir="rtl">
+						<div class="row">
+							<div class="col-3 col-6-medium col-12-small">
+
+								<!-- Contact -->
+									<section class="widget contact last">
+										<h3>للاتصال بنا</h3>
+										<ul>
+											<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+											<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+											<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+											<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+											<li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
+										</ul>
+										<p>تجزئة المسيرة<br />
+										تاوريرت, 65800<br />
+										230 122 666(212+)</p>
+									</section>
+
+							</div>						
+							<div class="col-3 col-6-medium col-12-small">
+
+							</div>
+							<div class="col-3 col-6-medium col-12-small">
+
+							</div>
+							<div class="col-3 col-6-medium col-12-small">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12">
+								<div id="copyright">
+									<ul class="menu">
+										<li>&copy; FAHHAMA. All rights reserved</li><li>Design: imad FAHHAMA</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</footer>
+				</div>
+			</div>
+	</body>
 </html>

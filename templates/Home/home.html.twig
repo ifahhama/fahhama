@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %} 
+{% block body %}
+	<div id="features-wrapper">
+		<div class="container">
+			<div class="row" dir="rtl">
+				{% for article in Articles %}
+				<div class="col-4 col-12-medium">
+					<section class="box feature">
+						<a href="{{ path('app_article',{'id': article.id})}}" class="image featured"><img src={{ asset('uploads/'~article.Url) }} alt="" /></a>
+						<div class="inner">
+							<header>
+								<h2>{{ article.Tile}}</h2>
+								<p>{{ article.ShortDescription}}</p>
+							</header>
+							{#{{ article.Body|raw}}#}
+							{{ article.Body|length > 255 ? article.Body|striptags|slice(0, 255) ~ '...' : article.Body  }}
+							{% if article.Body|length > 255 %}
+							<p><a href="{{ path('app_article',{'id': article.id}) }}">اقرأ المزيد</a></p>
+							{% endif %}
+						</div>
+					</section>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

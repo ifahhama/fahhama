@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %} 
+{% block body %}
+    <div id="main-wrapper">
+        <div class="container">
+            <div class="row gtr-200">
+                <div class="col-12 col-12-medium">
+                    <div id="content" dir="rtl">
+                        {% for article in Articles %}
+                        <!-- Content -->
+                        <article>
+                            <h2>{{ article.Tile }}</h2>
+                            {{ article.Body|raw}}
+                        </article>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

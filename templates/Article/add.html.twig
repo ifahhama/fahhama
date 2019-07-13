@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %} {% block body %}
+<div id="main-wrapper">
+    <div class="container">
+        <div class="row gtr-200">
+            <div class="col-12 col-12-medium">
+                <form action="{{ path('app_save')}}" method="post" enctype="multipart/form-data" dir="rtl">
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-7 col-md-9">
+                            <div class="form-group">
+                            <label for="title">العنوان</label>
+                            {{ form_widget(form.Tile, { 'attr': {'class': 'form-control', 'placeholder': 'العنوان'} }) }}
+                            </div>                        
+                            <div class="form-group">
+                                <label for="shortDescription">العنوان القصير</label>
+                                {{ form_widget(form.ShortDescription, { 'attr': {'class': 'form-control', 'placeholder': 'العنوان القصير'} }) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_widget(form.Body, { 'attr': {'class': 'form-control' } }) }}
+                            </div>
+                        </div>
+                        <div class="col-xs-5 col-md-3">
+                            <div class="form-group">
+                                <label for="category_id">الموضوع</label>
+                                {{ form_widget(form.categorie, {'class': 'btn btn-primary' }) }}
+                            </div>
+                            <div class="form-group">
+                                <label for="image">Image</label>
+                                {{ form_widget(form.Url, { 'attr': {'class': 'form-control'}}) }}
+                                <!--<input type="file" name="image" id="image" class="form-control" />-->
+                                <p class="help-block">Image definitions</p>
+                            </div>
+                            <a href="#" class="thumbnail">
+                                <img src="http://fakeimg.pl/300/">
+                            </a>
+                            <div class="form-group">
+                                {{ form_row(form.save, { 'attr': {'class': 'btn btn-primary'}, 'label': 'انشر' }) }}
+                            </div>    
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% block javascripts %}
+<script src="http://cdn.ckeditor.com/4.4.7/full/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('form_Body');
+</script>
+{% endblock %} {% endblock %}
