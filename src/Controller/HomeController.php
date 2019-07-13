@@ -11,7 +11,10 @@ class HomeController extends AbstractController
 {
     public function accueil()
     {
-        $em = $this->getDoctrine()->getManager();
+        return new Response(
+            '<html><body>Lucky the site is Ok</body></html>'
+        );
+        /*$em = $this->getDoctrine()->getManager();
         $articles = $em
         ->createQueryBuilder()
         ->select('a.id, a.Tile, a.Body, a.ShortDescription, a.Url')
@@ -32,6 +35,6 @@ class HomeController extends AbstractController
                 'Articles' => $articles,
                 'Menus' => $menus
             ]
-        );
+        );*/
     }
 }
