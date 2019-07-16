@@ -14,8 +14,12 @@ class ArticleSaveController extends AbstractController
 {
     public function saveArticle()
     {   
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
+        try {
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
+        } catch (Exception $e) {
+
         }
         $session = new Session();
         if($session->has('Saved')) {

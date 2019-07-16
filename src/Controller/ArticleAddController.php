@@ -19,8 +19,12 @@ class ArticleAddController extends AbstractController
 {
     public function addArticle()
     {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
+        try {
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
+        } catch (Exception $e) {
+
         }
         $session = new Session();
         $session->set('Saved', true);
