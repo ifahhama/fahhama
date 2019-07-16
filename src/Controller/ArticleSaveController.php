@@ -21,38 +21,40 @@ class ArticleSaveController extends AbstractController
         } catch (Exception $e) {
 
         }
-        $session = new Session();
-        if($session->has('Saved')) {
+        try {
+            $session = new Session();
+            if($session->has('Saved')) {
 
-            $request = Request::createFromGlobals();
-            $em = $this->getDoctrine()->getManager();
-            $article = $request->request->get('form');
-            $file = $request->files->get('form');
-            $file = $file['Url'];
-            $newFileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
-            $file->move($this->getParameter('image_directory'), $newFileName);
-    
-            $Cat = $this->getDoctrine()
-            ->getRepository(Categories::class)
-            ->find($article['categorie']);
-    
-            $newArticle = new Article();
-            $newArticle->setTile($article['Tile']);
-            $newArticle->setBody($article['Body']);
-            $newArticle->setDateCreated(new \DateTime('now'));
-            $newArticle->setAuthor('Admin');
-            $newArticle->setShortDescription($article['ShortDescription']);
-            $newArticle->setUrl($newFileName);
-            $newArticle->setCategorie($Cat);
-    
-            $em->persist($newArticle);
-            $em->flush();
-            $session->set('Saved', false);
-        } else {
-            return $this->redirectToRoute('app_addArticle');
+                $request = Request::createFromGlobals();
+                $em = $this->getDoctrine()->getManager();
+                $article = $request->request->get('form');
+                $file = $request->files->get('form');
+                $file = $file['Url'];
+                $newFileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+                $file->move($this->getParameter('image_directory'), $newFileName);
+        
+                $Cat = $this->getDoctrine()
+                ->getRepository(Categories::class)
+                ->find($article['categorie']);
+        
+                $newArticle = new Article();
+                $newArticle->setTile($article['Tile']);
+                $newArticle->setBody($article['Body']);
+                $newArticle->setDateCreated(new \DateTime('now'));
+                $newArticle->setAuthor('Admin');
+                $newArticle->setShortDescription($article['ShortDescription']);
+                $newArticle->setUrl($newFileName);
+                $newArticle->setCategorie($Cat);
+        
+                $em->persist($newArticle);
+                $em->flush();
+                $session->set('Saved', false);
+            } else {
+                return $this->redirectToRoute('app_addArticle');
+            }
+        } catch (Exception $e) {
+            return $this->redirectToRoute('app_home');
         }
-
-        return $this->redirectToRoute('app_home');
     }
 
     /**
