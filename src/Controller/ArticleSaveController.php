@@ -49,6 +49,9 @@ class ArticleSaveController extends AbstractController
                 $em->persist($newArticle);
                 $em->flush();
                 $session->set('Saved', false);
+                
+                return $this->redirectToRoute('app_home');
+
             } else {
                 return $this->redirectToRoute('app_addArticle');
             }
