@@ -26,13 +26,13 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
-speicher210_cloudinary:
-    url: cloudinary://514837497593777:8UQlSQ_DiOG4DlYXgfrG_vU_4uQ@fahhama-com
-    # The next configuration variables should be defined if they are not present in the URL
-    # The URL will take precedence
-    cloud_name: fahhama-com
-    access_identifier:
-        api_key: 514837497593777
-        api_secret: 8UQlSQ_DiOG4DlYXgfrG_vU_4uQ
-    options:
-        secure: true
+    speicher210_cloudinary:
+        url: cloudinary://514837497593777:8UQlSQ_DiOG4DlYXgfrG_vU_4uQ@fahhama-com
+        # The next configuration variables should be defined if they are not present in the URL
+        # The URL will take precedence
+        cloud_name: fahhama-com
+        access_identifier:
+            api_key: 514837497593777
+            api_secret: 8UQlSQ_DiOG4DlYXgfrG_vU_4uQ
+        options:
+            secure: true
