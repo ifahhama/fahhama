@@ -6,7 +6,7 @@
 				{% for article in Articles %}
 				<div class="col-4 col-12-medium">
 					<section class="box feature">
-						<a href="{{ path('app_article',{'id': article.id})}}" class="image featured"><img src={{ asset('uploads/'~article.Url) }} alt="" /></a>
+						<a href="{{ path('app_article',{'id': article.id})}}" class="image featured"><img src={{ asset(article.Url) }} alt="" /></a>
 						<div class="inner">
 							<header>
 								<h2>{{ article.Tile}}</h2>

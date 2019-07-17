@@ -31,7 +31,8 @@ class ArticleSaveController extends AbstractController
                 $file = $request->files->get('form');
                 $file = $file['Url'];
                 $newFileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
-                $file->move($this->getParameter('image_directory'), $newFileName);
+                $upload = \Cloudinary\Uploader::upload($file, array("public_id" => $newFileName));
+                //$file->move($this->getParameter('image_directory'), $newFileName);
         
                 $Cat = $this->getDoctrine()
                 ->getRepository(Categories::class)
@@ -43,7 +44,7 @@ class ArticleSaveController extends AbstractController
                 $newArticle->setDateCreated(new \DateTime('now'));
                 $newArticle->setAuthor('Admin');
                 $newArticle->setShortDescription($article['ShortDescription']);
-                $newArticle->setUrl($newFileName);
+                $newArticle->setUrl($upload['secure_url']);
                 $newArticle->setCategorie($Cat);
         
                 $em->persist($newArticle);
